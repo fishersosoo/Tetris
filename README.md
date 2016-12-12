@@ -27,9 +27,33 @@
     "hello": "world"
 }
 ```
+### 127.0.0.1:9000/localranklist/ ###
+#### Get ####
+获取本地服务器所有玩家分数，未排名
+```json
+{
+    "list": [
+        {
+            "name": "2",
+            "score": 2,
+			"server": "restful"
+        },
+        {
+            "name": "12321",
+            "score": 2,
+			"server": "restful"
+        },
+        {
+            "name": "32",
+            "score": 33,
+			"server": "restful"
+        }
+    ]
+}
+```
 
 ### 127.0.0.1:9000/ranklist/ ###
-获取服务器所有的玩家及分数，未排名
+获取所有服务器所有的玩家及分数，未排名
 
 #### Get ####
 list：一个列表，元素为一个player对象
@@ -38,15 +62,18 @@ list：一个列表，元素为一个player对象
     "list": [
         {
             "name": "2",
-            "score": 2
+            "score": 2,
+			"server": "restful"
         },
         {
             "name": "12321",
-            "score": 2
+            "score": 2,
+			"server": "restful"
         },
         {
             "name": "32",
-            "score": 33
+            "score": 33,
+			"server": "restful"
         }
     ]
 }

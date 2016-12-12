@@ -10,3 +10,4 @@ class Player(db.Model):
     __tablename__ = 'Player'
     PlayerName = Column('player_name', String(50), primary_key=True)
     Score = Column("score", Integer)
+    Server=Column("server",String(10),default="restful")
