@@ -27,7 +27,8 @@ class RankList(restful.Resource):
         url = "http://localhost:9001/Service/ServiceHello?wsdl"
         client = Client(url)
         soap_return=client.service.ReadScore()
-        print soap_return
+        for one in soap_return:
+            player_list.append({'name': one[0][0].encode('utf-8'), 'score': int(one[0][1]), 'server': one[0][2]})
         return jsonify({'list': player_list})
 
 
