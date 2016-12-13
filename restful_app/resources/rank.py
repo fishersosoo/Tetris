@@ -25,10 +25,13 @@ class RankList(restful.Resource):
         for one in player:
             player_list.append({'name': one.PlayerName, 'score': one.Score, 'server': one.Server})
         url = "http://localhost:9001/Service/ServiceHello?wsdl"
-        client = Client(url)
-        soap_return=client.service.ReadScore()
-        for one in soap_return:
-            player_list.append({'name': one[0][0].encode('utf-8'), 'score': int(one[0][1]), 'server': one[0][2]})
+        try:
+            client = Client(url)
+            soap_return=client.service.ReadScore()
+            for one in soap_return:
+                player_list.append({'name': one[0][0].encode('utf-8'), 'score': int(one[0][1]), 'server': one[0][2]})
+        except:
+            return jsonify({'list': player_list})
         return jsonify({'list': player_list})
 
 
