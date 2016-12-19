@@ -10,11 +10,11 @@ from restful_app.model.player import Player
 
 class LocalRankList(restful.Resource):
     def get(self):
-        player = Session.query(Player).all()
+        player = Session.query(Player).all()    
         player_list = list()
         for one in player:
             player_list.append({'name': one.PlayerName, 'score': one.Score, 'server': one.Server})
-        print jsonify(player_list)
+
         return jsonify({'list': player_list})
 
 
@@ -24,7 +24,7 @@ class RankList(restful.Resource):
         player_list = list()
         for one in player:
             player_list.append({'name': one.PlayerName, 'score': one.Score, 'server': one.Server})
-        url = "http://localhost:9001/Service/ServiceHello?wsdl"
+        url = "http://192.168.43.209:9001/Service/ServiceHello?wsdl"
         try:
             client = Client(url)
             soap_return=client.service.ReadScore()
